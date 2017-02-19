@@ -64,5 +64,7 @@ int main()
         }
     }
 
+    printf("%g\n",deposit); //Output deposit
+
     return 0;
 }
