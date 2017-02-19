@@ -15,5 +15,31 @@ int main()
         perror("incorrect input");
         return 0;
     }
+
+    if(deposit<=100000) //If the deposit is less than
+    {
+        if(time<=30)
+        {
+	    deposit=deposit*0.9;
+        }
+        else
+        
+            if((time>=31)&&(time<=120)){
+                deposit=deposit*1.02;
+        }
+        else
+        
+            if((time>=121)&&(time<=240)){
+                deposit=deposit*1.06;
+        }
+        else
+        
+            if((time>=241)&&(time<=365)){	
+                deposit=deposit*1.12;
+        }
+    }
+    else
+    {
+
     return 0;
 }
