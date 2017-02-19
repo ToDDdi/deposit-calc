@@ -40,6 +40,29 @@ int main()
     }
     else
     {
+    if(deposit>100000) //If the deposit is more than
+        {
+        if(time<=30)
+            {
+	        deposit=deposit*0.9;
+            }
+            else
+            
+                if((time>=31)&&(time<=120)){
+                    deposit=deposit*1.03;
+            }
+            else
+            
+                if((time>=121)&&(time<=240)){
+                    deposit=deposit*1.08;
+            }
+            else
+            
+                if((time>=241)&&(time<=365)){	
+                    deposit=deposit*1.15;
+            }
+        }
+    }
 
     return 0;
 }
