@@ -3,63 +3,63 @@
 int main() 
 {
     int time,i;
-	float deposit;
+    float deposit;
 
-	printf("Time deposit:\n");        
-	scanf("%d",&time);
-	printf("Sum deposit:\n");
-	scanf("%f",&deposit);
+    printf("Time deposit:\n");        
+    scanf("%d",&time);
+    printf("Sum deposit:\n");
+    scanf("%f",&deposit);
 
-	if((time>365)||(time<0)||(deposit<10000)) 
-	{
+    if((time > 365) || (time < 0) || (deposit < 10000)) 
+    {
         perror("incorrect input");
         return 0;
     }
 
-    if(deposit<=100000) //If the deposit is less than
+    if(deposit <= 100000) //If the deposit is less than
     {
-        if(time<=30)
+        if(time <= 30)
         {
-	    deposit=deposit*0.9;
+	    deposit = deposit * 0.9;
         }
         else
         
-            if((time>=31)&&(time<=120)){
-                deposit=deposit*1.02;
+            if((time >= 31) && (time <= 120)){
+                deposit = deposit * 1.02;
         }
         else
         
-            if((time>=121)&&(time<=240)){
-                deposit=deposit*1.06;
+            if((time >= 121) && (time <= 240)){
+                deposit = deposit * 1.06;
         }
         else
         
-            if((time>=241)&&(time<=365)){	
-                deposit=deposit*1.12;
+            if((time >= 241) && (time <= 365)){	
+                deposit = deposit * 1.12;
         }
     }
     else
     {
-    if(deposit>100000) //If the deposit is more than
+    if(deposit > 100000) //If the deposit is more than
         {
-        if(time<=30)
+        if(time <= 30)
             {
-	        deposit=deposit*0.9;
+	        deposit = deposit * 0.9;
             }
             else
             
-                if((time>=31)&&(time<=120)){
-                    deposit=deposit*1.03;
+                if((time >= 31) && (time <= 120)){
+                    deposit = deposit * 1.03;
             }
             else
             
-                if((time>=121)&&(time<=240)){
-                    deposit=deposit*1.08;
+                if((time >= 121) && (time <= 240)){
+                    deposit = deposit * 1.08;
             }
             else
             
-                if((time>=241)&&(time<=365)){	
-                    deposit=deposit*1.15;
+                if((time >= 241) && ( time <= 365)){	
+                    deposit = deposit * 1.15;
             }
         }
     }
