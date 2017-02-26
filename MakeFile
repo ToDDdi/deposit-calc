@@ -1,0 +1,2 @@
+depositcalc:depositcalc
+	gcc -Wall -o depositcalc depositcalc.c
