@@ -2,7 +2,7 @@
 
 int main() 
 {
-    int time,i;
+    int time;
     float deposit;
 
     printf("Time deposit:\n");        
