@@ -1,6 +1,7 @@
-#ifndef DEPOSITCALC_H
-#define DEPOSITCALC_H
+#ifndef DEPOSIT_H
+#define DEPOSIT_H
 
-float func(float vklad, int srok);
+float deposit_calc(int srok, int vklad);
+int input(int *vklad, int *srok);
 
 #endif
