@@ -13,7 +13,7 @@ BUILD_DIR_TEST = build/test
 SRC_DIR_TEST = test
 SRC_TEST = $(wildcard $(SRC_DIR_TEST)/*.c)
 OBJ_TEST = $(SRC_TEST:$(SRC_DIR_TEST)/%.c=$(BUILD_DIR_TEST)/%.o)
-TARGET_TEST = $(BIN_DIR)/deposit-test
+TARGET_TEST = $(BIN_DIR)/deposit-calc-test
 
 $(TARGET): $(OBJ)
 	@$(DIRGUARD)
