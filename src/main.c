@@ -16,7 +16,7 @@ int main()
         return 0;
     }
     vklad = func(vklad, srok);  
-    printf("\nCуммa вклада на момент окончания срока: %g\n", vklad);	
+    printf("\nCуммa вклада на момент окончания срока:  %g\n", vklad);	
     return 0;
 }
    
