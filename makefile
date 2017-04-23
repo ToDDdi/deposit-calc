@@ -1,22 +1,42 @@
-.PHONY:all clean
+CFLAG = -Wall -Werror -o
+BIN_DIR = bin
+BUILD_DIR = build/src
+SRC_DIR = src
+CC = gcc
+DIRGUARD=@mkdir -p $(@D)
 
-all: build/src/main.o build/src/deposit.o
-	gcc -o bin/main build/src/main.o build/src/deposit.o
+SRC = $(wildcard $(SRC_DIR)/*.c)
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+TARGET = $(BIN_DIR)/main
 
-build/src/main.o: src/main.c
-	gcc -Wall -Werror -c src/main.c -o build/src/main.o
+BUILD_DIR_TEST = build/test
+SRC_DIR_TEST = test
+SRC_TEST = $(wildcard $(SRC_DIR_TEST)/*.c)
+OBJ_TEST = $(SRC_TEST:$(SRC_DIR_TEST)/%.c=$(BUILD_DIR_TEST)/%.o)
+TARGET_TEST = $(BIN_DIR)/deposit-test
 
-build/src/deposit.o: src/deposit.c
-	gcc -Wall -Werror -c src/deposit.c -o build/src/deposit.o
+$(TARGET): $(OBJ)
+	@$(DIRGUARD)
+	@$(CC) $(CFLAG) $@ $(OBJ)
 
-build/test/main.o: test/main.c
-	gcc -I src -I thirdparty -Wall -Werror -c test/main.c -o build/test/main.o
+$(OBJ): $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c
+	@$(DIRGUARD)
+	@$(CC) -c $(CFLAG) $@ $<
 
-deposit-test: build/test/main.o
-	gcc -o bin/deposit-test build/test/main.o build/src/deposit.o
+.PHONY: clean
 
-clean:
-	rm -rf build/src/*.o bin/*
+clean: 
+	@rm -f $(BUILD_DIR)/*.o $(TARGET)
+	@rm -f $(BUILD_DIR_TEST)/*.o $(TARGET_TEST)
+
+$(TARGET_TEST): $(OBJ_TEST) $(OBJ)
+	@$(DIRGUARD)
+	@$(CC) $(CFLAG) $@ $(OBJ_TEST) $(BUILD_DIR)/deposit.o
+
+$(OBJ_TEST): $(BUILD_DIR_TEST)/%.o : $(SRC_DIR_TEST)/%.c
+	@$(DIRGUARD)
+	@$(CC) -I $(SRC_DIR) -I thirdparty -c $< $(CFLAG) $@
+
+.PHONY: testing
+testing: $(TARGET_TEST)	
 	
-clean2:
-	rm -rf build/test/*.o bin/*
